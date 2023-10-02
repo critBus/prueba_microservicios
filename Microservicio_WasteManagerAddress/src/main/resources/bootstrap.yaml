@@ -1,6 +1,6 @@
 spring:
   application:
-    name: waste-manager-address-service 
+    name: microserviciowastemanageraddres 
   cloud:
     config:
       enabled: true
