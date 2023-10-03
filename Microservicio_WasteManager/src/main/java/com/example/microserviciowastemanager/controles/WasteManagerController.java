@@ -14,6 +14,8 @@ import com.example.microserviciowastemanager.entidades.*;
 import com.example.microserviciowastemanager.repositorios.*;
 import com.example.microserviciowastemanager.servicios.*;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping("/waste")
 public class WasteManagerController {
@@ -43,4 +45,6 @@ public class WasteManagerController {
 		WasteManagerEntity nuevo= service.save(entidad);
 		return ResponseEntity.ok(nuevo);
 	}
+	
+	//@CircuitBreaker(name="microserviciowastemanageraddresCB",,fallbackMethod = "fallBackGet")
 }
