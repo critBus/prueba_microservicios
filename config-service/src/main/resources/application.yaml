@@ -4,7 +4,7 @@ spring:
   cloud:     config:
       server:
         git:
-          default-label: config-service
+          default-label: eureka
           uri: https://github.com/critBus/prueba_microservicios
           search-paths: config-data
   application:
