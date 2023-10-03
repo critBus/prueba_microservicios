@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.microserviciowastemanager.modelos.*;
 
 
-@FeignClient(name = "waste-manager-address-service",url = "http://localhost:8001/address")
+@FeignClient(name = "microserviciowastemanageraddres")
+@RequestMapping("/address")
 public interface WasteManagerAddressClient {
 
 	@GetMapping
