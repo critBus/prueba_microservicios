@@ -5,8 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 public class WasteManagerAddressEntity {
 	private String direccion;
