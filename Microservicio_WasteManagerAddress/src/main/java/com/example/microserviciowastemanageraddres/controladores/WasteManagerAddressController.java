@@ -23,7 +23,7 @@ public class WasteManagerAddressController {
 	private WasteManagerAddressService service;
 	
 	@GetMapping
-	public ResponseEntity<List<WasteManagerAddressEntity>> listar(){
+	public ResponseEntity<List<WasteManagerAddressEntity>> getAll(){
 		List<WasteManagerAddressEntity> lista = service.getAll();
 		if(lista.isEmpty()) {
 			return ResponseEntity.noContent().build();
@@ -32,8 +32,8 @@ public class WasteManagerAddressController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<WasteManagerAddressEntity> obtener(@PathVariable("id") int id){
-		WasteManagerAddressEntity entidad = service.getById(id);
+	public ResponseEntity<WasteManagerAddressEntity> findById(@PathVariable("id") int id){
+		WasteManagerAddressEntity entidad = service.findById(id);
 		if(entidad == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -41,7 +41,7 @@ public class WasteManagerAddressController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<WasteManagerAddressEntity> guardar(@RequestBody WasteManagerAddressEntity entidad){
+	public ResponseEntity<WasteManagerAddressEntity> save(@RequestBody WasteManagerAddressEntity entidad){
 		WasteManagerAddressEntity nuevo= service.save(entidad);
 		return ResponseEntity.ok(nuevo);
 	}

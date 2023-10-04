@@ -20,7 +20,7 @@ public class WasteManagerAddressService {
 		return repository.findAll();
 	}
 	
-	public WasteManagerAddressEntity getById(int id) {
+	public WasteManagerAddressEntity findById(int id) {
 		return repository.findById(id).orElse(null);
 	}
 	

@@ -12,16 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.microserviciowastemanager.modelos.*;
 
 
+
 @FeignClient(name = "microserviciowastemanageraddres")
 @RequestMapping("/address")
 public interface WasteManagerAddressClient {
 
 	@GetMapping
-	public List<WasteManagerAddressEntity> listar();
+	public ResponseEntity<List<WasteManagerAddressEntity>> getAll();
 	
 	@GetMapping("/{id}")
-	public WasteManagerAddressEntity obtener(@PathVariable("id") int id);
+	public  ResponseEntity<WasteManagerAddressEntity> findById(@PathVariable("id") Long id);
 	
 	@PostMapping
-	public WasteManagerAddressEntity guardar(@RequestBody WasteManagerAddressEntity entidad);
+	public  ResponseEntity<WasteManagerAddressEntity>  save(@RequestBody WasteManagerAddressEntity entidad);
 }

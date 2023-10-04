@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.microserviciowastemanager.entidades.*;
 import com.example.microserviciowastemanager.repositorios.*;
 import com.example.microserviciowastemanager.servicios.*;
+import com.example.microserviciowastemanager.dto.*;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
@@ -23,8 +24,8 @@ public class WasteManagerController {
 	private WasteManagerService service;
 	
 	@GetMapping
-	public ResponseEntity<List<WasteManagerEntity>> listar(){
-		List<WasteManagerEntity> lista = service.getAll();
+	public ResponseEntity<List<WasteManagerDto>> getAll(){
+		List<WasteManagerDto> lista = service.getAll();
 		if(lista.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}
@@ -32,8 +33,8 @@ public class WasteManagerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<WasteManagerEntity> obtener(@PathVariable("id") int id){
-		WasteManagerEntity entidad = service.getById(id);
+	public ResponseEntity<WasteManagerEntity> findById(@PathVariable("id") int id){
+		WasteManagerEntity entidad = service.findById(id);
 		if(entidad == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -41,7 +42,7 @@ public class WasteManagerController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<WasteManagerEntity> guardar(@RequestBody WasteManagerEntity entidad){
+	public ResponseEntity<WasteManagerEntity> save(@RequestBody WasteManagerEntity entidad){
 		WasteManagerEntity nuevo= service.save(entidad);
 		return ResponseEntity.ok(nuevo);
 	}
