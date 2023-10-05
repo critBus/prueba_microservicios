@@ -21,7 +21,7 @@ public interface WasteManagerAddressClient {
 	public ResponseEntity<List<WasteManagerAddressEntity>> getAll();
 	
 	@GetMapping("/{id}")
-	public  ResponseEntity<WasteManagerAddressEntity> findById(@PathVariable("id") Long id);
+	public  ResponseEntity findById(@PathVariable("id") Long id);
 	
 	@PostMapping
 	public  ResponseEntity<WasteManagerAddressEntity>  save(@RequestBody WasteManagerAddressEntity entidad);

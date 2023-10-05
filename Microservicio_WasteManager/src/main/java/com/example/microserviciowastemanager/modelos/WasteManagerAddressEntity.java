@@ -19,8 +19,10 @@ public class WasteManagerAddressEntity {
 	
 	private Long version = 0L;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastModifiedDate;
 
 	public Long getId() {

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,9 +22,9 @@ private Long id;
 private String nombre;
 private String nif;
 
-private WasteManagerAddressEntity wasteManagerAddressEntity;
+//private WasteManagerAddressEntity wasteManagerAddressEntity;
 
-//private Long addressid;
+private Long WasteManagerAddressId;
 
 private Boolean isEnabled = Boolean.TRUE;
 private Long version = 0L;
@@ -34,6 +35,10 @@ private Date createdDate;
 @Temporal(TemporalType.TIMESTAMP)
 @LastModifiedDate
 private Date lastModifiedDate;
+
+@PreUpdate
+public void setLastUpdate() {  this.lastModifiedDate = new Date(); }
+
 public String getNombre() {
 	return nombre;
 }
@@ -64,15 +69,41 @@ public Long getVersion() {
 public void setVersion(Long version) {
 	this.version = version;
 }
-public WasteManagerAddressEntity getWasteManagerAddressEntity() {
-	return wasteManagerAddressEntity;
+
+public Long getWasteManagerAddressId() {
+	return WasteManagerAddressId;
 }
-public void setWasteManagerAddressEntity(WasteManagerAddressEntity wasteManagerAddressEntity) {
-	this.wasteManagerAddressEntity = wasteManagerAddressEntity;
+public void setWasteManagerAddressId(Long wasteManagerAddressId) {
+	WasteManagerAddressId = wasteManagerAddressId;
+}
+
+//public WasteManagerAddressEntity getWasteManagerAddressEntity() {
+//	return wasteManagerAddressEntity;
+//}
+//public void setWasteManagerAddressEntity(WasteManagerAddressEntity wasteManagerAddressEntity) {
+//	this.wasteManagerAddressEntity = wasteManagerAddressEntity;
+//}
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public Date getCreatedDate() {
+	return createdDate;
+}
+public void setCreatedDate(Date createdDate) {
+	this.createdDate = createdDate;
+}
+public Date getLastModifiedDate() {
+	return lastModifiedDate;
+}
+public void setLastModifiedDate(Date lastModifiedDate) {
+	this.lastModifiedDate = lastModifiedDate;
 } 
 
-public Long getId() {
-	return this.id;
-}
+//public Long getId() {
+//	return this.id;
+//}
 
 }
